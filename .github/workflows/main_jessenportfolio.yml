@@ -27,7 +27,7 @@ jobs:
 
       - name: List directories and check for path
         run: |
-          ls -al src
+          ls -al src/ImageProcessorFunctions
 
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
