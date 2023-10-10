@@ -25,6 +25,17 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+
+      - name: List directories and check for path
+        run: |
+          ls -al
+          if [ -d "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}" ]; then
+          echo "Directory exists."
+          else
+          echo "Directory does not exist."
+          exit 1
+          fi
+
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
         run: |
