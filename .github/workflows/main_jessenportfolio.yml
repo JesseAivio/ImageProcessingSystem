@@ -25,15 +25,11 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: List directories and check for path
-        run: |
-          ls -al src/ImageProcessorFunctions
-
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
         run: |
-          pushd 'src/ImageProcessorFunctions'
-          dotnet build --configuration Release --output ./output -v detailed
+          pushd '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          dotnet build --configuration Release --output ./output
           popd
 
       - name: 'Run Azure Functions Action'
