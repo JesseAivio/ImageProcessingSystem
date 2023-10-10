@@ -28,7 +28,7 @@ jobs:
       - name: List directories and check for path
         run: |
           ls -al
-          if [ -d "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}" ]; then
+          if [ -d "src/ImageProcessorFunctions" ]; then
           echo "Directory exists."
           else
           echo "Directory does not exist."
