@@ -11,7 +11,7 @@ on:
 
 env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'ImageProcessingSystem/src/ImageProcessorFunctions' # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '6.0.x' # set this to the dotnet version to use
+  DOTNET_VERSION: '6.0.0' # set this to the dotnet version to use
 
 jobs:
   build-and-deploy:
@@ -28,7 +28,7 @@ jobs:
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
         run: |
-          pushd '${GITHUB_WORKSPACE}/ImageProcessingSystem/src/ImageProcessorFunctions'
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           dotnet build --configuration Release --output ./output
           popd
 
