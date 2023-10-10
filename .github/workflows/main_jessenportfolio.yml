@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'ImageProcessingSystem/src/ImageProcessorFunctions' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'src/ImageProcessorFunctions' # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '6.0.x' # set this to the dotnet version to use
 
 jobs:
@@ -24,17 +24,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-
-
-      - name: List directories and check for path
-        run: |
-          ls -al
-          if [ -d "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}" ]; then
-          echo "Directory exists."
-          else
-          echo "Directory does not exist."
-          exit 1
-          fi
 
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
