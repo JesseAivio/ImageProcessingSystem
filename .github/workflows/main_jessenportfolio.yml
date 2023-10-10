@@ -25,6 +25,10 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: List directories and check for path
+        run: |
+          ls -al src
+
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
         run: |
